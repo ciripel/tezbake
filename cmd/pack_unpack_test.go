@@ -62,6 +62,9 @@ func TestPackHelp(t *testing.T) {
 	if !strings.Contains(output, "--output string") {
 		t.Fatalf("expected pack help output, got:\n%s", output)
 	}
+	if strings.Contains(output, "--output-format string") {
+		t.Fatalf("expected inherited output-format to be hidden from pack help, got:\n%s", output)
+	}
 }
 
 func TestUnpackHelp(t *testing.T) {
@@ -75,6 +78,9 @@ func TestUnpackHelp(t *testing.T) {
 	}
 	if !strings.Contains(output, "--source string") {
 		t.Fatalf("expected unpack help output, got:\n%s", output)
+	}
+	if strings.Contains(output, "--output-format string") {
+		t.Fatalf("expected inherited output-format to be hidden from unpack help, got:\n%s", output)
 	}
 }
 
